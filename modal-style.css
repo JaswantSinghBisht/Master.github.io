@@ -1,0 +1,99 @@
+/* The Modal (background with glass effect) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.1); /* Light semi-transparent background */
+    backdrop-filter: blur(10px); /* Blur effect covering the entire modal */
+    -webkit-backdrop-filter: blur(10px); /* Safari support */
+    overflow: hidden;
+    opacity: 0; /* Initially transparent */
+    transition: opacity 0.3s ease-in-out; /* Fade effect */
+  }
+  
+  /* Show the modal (when triggered) */
+  .modal.show {
+    display: block;
+    opacity: 1; /* Fully visible when show class is added */
+  }
+  
+  /* Modal content with drop shadow and glowing effect */
+  .modal-content {
+    position: relative;
+    margin: 10% auto;
+    width: 90%;
+    max-width: 1000px;
+    background-color: rgba(0, 0, 0, 0.8); /* Solid dark background for video */
+    border-radius: 12px; /* Rounded corners */
+    padding: 10px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3); /* Drop shadow effect */
+    opacity: 0;
+    transform: scale(0.7); /* Shrunk size initially */
+    transition: transform 0.5s ease, opacity 0.5s ease; /* Smooth transitions */
+    border: 2px solid rgba(255, 255, 255, 0.5); /* Glowing border */
+    animation: glow 1.5s infinite alternate; /* Glow animation */
+    z-index: 10000; /* Ensure modal content is on top */
+  }
+  
+  /* Make sure modal-content is visible after modal is shown */
+  .modal.show .modal-content {
+    opacity: 1;
+    transform: scale(1); /* Full size when shown */
+  }
+  
+  /* Glow animation for modal content */
+  @keyframes glow {
+    0% {
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+    }
+    100% {
+      box-shadow: 0 0 30px rgba(255, 255, 255, 0.8);
+    }
+  }
+  
+  /* Pulse animation for close button */
+  .close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 30px;
+    color: #fff;
+    cursor: pointer;
+    animation: pulse 1.5s infinite; /* Pulse animation */
+  }
+  
+  /* Pulse animation effect */
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #bbb;
+    transform: scale(1.2); /* Grow slightly on hover */
+  }
+  
+  /* Ensure iframe is properly displayed */
+  .modal-content iframe {
+    width: 100%;
+    height: 550px; /* Increased height for larger video */
+    display: block; /* Ensure it is displayed as block */
+  }
+  
+  /* Disable scrolling when modal is open */
+  body.modal-open {
+    overflow: hidden;
+  }
+  
